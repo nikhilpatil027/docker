@@ -1,0 +1,618 @@
+ubuntu@ip-172-31-36-206:~$  ls
+docker
+ubuntu@ip-172-31-36-206:~$ cd docker/
+ubuntu@ip-172-31-36-206:~/docker$ ls
+Dockerfile
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ git clone https://github.com/nikhilpatil027/Shellscripts_2024_NikhilPatil.git
+Cloning into 'Shellscripts_2024_NikhilPatil'...
+remote: Enumerating objects: 58, done.
+remote: Counting objects: 100% (58/58), done.
+remote: Compressing objects: 100% (43/43), done.
+remote: Total 58 (delta 13), reused 38 (delta 4), pack-reused 0 (from 0)
+Receiving objects: 100% (58/58), 11.33 KiB | 1.62 MiB/s, done.
+Resolving deltas: 100% (13/13), done.
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ docker build -t image1 .
+ERROR: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Head "http://%2Fvar%2Frun%2Fdocker.sock/_ping": dial unix /var/run/docker.sock: connect: permission denied
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image1 .
+[+] Building 2.6s (8/8) FINISHED                                                                                                                        docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 192B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   1.5s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => CACHED [1/4] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                      0.0s
+ => [2/4] WORKDIR /home/ubuntu/docker                                                                                                                             0.0s
+ => [3/4] RUN pwd                                                                                                                                                 0.5s
+ => [4/4] RUN echo "Welcome to docker" >>file1                                                                                                                    0.3s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.1s
+ => => writing image sha256:ded5d5e4b6113f5f6f4e33f1ee9a6ec0bbd981ba7e5643cbacb6918058e553c9                                                                      0.0s
+ => => naming to docker.io/library/image1                                                                                                                         0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image1
+root@024e421da911:/home/ubuntu/docker# docker ps -a
+bash: docker: command not found
+root@024e421da911:/home/ubuntu/docker# ls
+file1
+root@024e421da911:/home/ubuntu/docker# cat file1
+Welcome to docker
+root@024e421da911:/home/ubuntu/docker# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ docker ps -a
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.48/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker ps -a
+CONTAINER ID   IMAGE      COMMAND       CREATED          STATUS                      PORTS     NAMES
+024e421da911   image1     "/bin/bash"   58 seconds ago   Exited (0) 12 seconds ago             vibrant_dhawan
+70bb966ac3ea   my_image   "/bin/bash"   3 days ago       Exited (0) 3 days ago                 busy_bouman
+9409582ae950   my_image   "/bin/bash"   3 days ago       Exited (127) 3 days ago               distracted_goodall
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker ps -a
+CONTAINER ID   IMAGE      COMMAND       CREATED              STATUS                      PORTS     NAMES
+024e421da911   image1     "/bin/bash"   About a minute ago   Exited (0) 43 seconds ago             vibrant_dhawan
+70bb966ac3ea   my_image   "/bin/bash"   3 days ago           Exited (0) 3 days ago                 busy_bouman
+9409582ae950   my_image   "/bin/bash"   3 days ago           Exited (127) 3 days ago               distracted_goodall
+ubuntu@ip-172-31-36-206:~/docker$ ls
+Dockerfile  Shellscripts_2024_NikhilPatil
+ubuntu@ip-172-31-36-206:~/docker$ cd Shellscripts_2024_NikhilPatil/
+ubuntu@ip-172-31-36-206:~/docker/Shellscripts_2024_NikhilPatil$ ls
+README.md  count_charaters.sh  emp_details.sh  file.sh  file3        linenumber.sh  palindrome.sh  service_running.sh  switch_case.sh
+addmal.sh  cpuusage.sh         equal.sh        file1    grater.sh    n.sh           red.sh         subdiv.sh           test.sh
+comp.sh    devisible.sh        facorial.sh     file2    hostname.sh  newfile        second.sh      sumofn.sh           variable.sh
+ubuntu@ip-172-31-36-206:~/docker/Shellscripts_2024_NikhilPatil$ cd ..
+ubuntu@ip-172-31-36-206:~/docker$ pwd
+/home/ubuntu/docker
+ubuntu@ip-172-31-36-206:~/docker$ ls
+Dockerfile  Shellscripts_2024_NikhilPatil
+ubuntu@ip-172-31-36-206:~/docker$ cat red.sh
+cat: red.sh: No such file or directory
+ubuntu@ip-172-31-36-206:~/docker$ cd Shellscripts_2024_NikhilPatil/
+ubuntu@ip-172-31-36-206:~/docker/Shellscripts_2024_NikhilPatil$ cat red.sh 
+#!/bin/bash
+echo "Enter the file to read the price"
+
+read file_name
+
+echo "Below are the vechiles which has the red colour"
+while read line
+ do 
+   colour=`echo "$line" | awk -F " " '{print $2}'`
+
+ if [ $colour == 'red' ]
+  then 
+      echo "$line" | awk -F " " '{print $1}'
+  fi
+
+done < $file_name
+ubuntu@ip-172-31-36-206:~/docker/Shellscripts_2024_NikhilPatil$ cat sumofn.sh 
+#!/bin/bash
+#Sum of first n numbers
+echo "Enter the integer value"
+read num
+
+sum=0
+
+while [ $num -gt 0 ]
+do
+ sum=`expr $sum + $num`
+ num=`expr $num - 1`
+done
+
+echo "The sum of first n numbers is $sum"
+ubuntu@ip-172-31-36-206:~/docker/Shellscripts_2024_NikhilPatil$ vi sumofn.sh 
+ubuntu@ip-172-31-36-206:~/docker/Shellscripts_2024_NikhilPatil$ cd ..
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ ls
+Dockerfile  Shellscripts_2024_NikhilPatil
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image2 .
+[+] Building 1.4s (9/9) FINISHED                                                                                                                        docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 258B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   1.3s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/docker                                                                                                                      0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => ERROR [5/5] COPY /home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumof.sh .                                                                                 0.0s
+------
+ > [5/5] COPY /home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumof.sh .:
+------
+Dockerfile:7
+--------------------
+   5 |     RUN pwd
+   6 |     RUN echo "Welcome to docker" >>file1
+   7 | >>> COPY /home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumof.sh .
+   8 |     CMD ["/bin/bash"]
+   9 |     
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref bd7e2cc8-a689-4ec8-aa28-b90dd9469ffb::or5kere40qlyd8yjqo20cvjji: "/home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumof.sh": not found
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image3 .
+[+] Building 0.9s (9/9) FINISHED                                                                                                                        docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 259B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.8s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/docker                                                                                                                      0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => ERROR [5/5] COPY /home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumofn.sh .                                                                                0.0s
+------
+ > [5/5] COPY /home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumofn.sh .:
+------
+Dockerfile:7
+--------------------
+   5 |     RUN pwd
+   6 |     RUN echo "Welcome to docker" >>file1
+   7 | >>> COPY /home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumofn.sh .
+   8 |     CMD ["/bin/bash"]
+   9 |     
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref bd7e2cc8-a689-4ec8-aa28-b90dd9469ffb::qjbiz0o0h7mznei2ctilng09o: "/home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumofn.sh": not found
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image4 .
+[+] Building 0.9s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 239B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.6s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 329B                                                                                                                                 0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/docker                                                                                                                      0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => [5/5] COPY Shellscripts_2024_NikhilPatil/sumofn.sh .                                                                                                          0.0s
+ => exporting to image                                                                                                                                            0.0s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:8eea50dc2a1dd2d0d1e779270fb738cfc44eb1af5bfbf7fda7b4af479b33daf0                                                                      0.0s
+ => => naming to docker.io/library/image4                                                                                                                         0.0s
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image5 .
+[+] Building 0.8s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 241B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.6s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 110B                                                                                                                                 0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/docker                                                                                                                      0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => CACHED [5/5] COPY ./Shellscripts_2024_NikhilPatil/sumofn.sh .                                                                                                 0.0s
+ => exporting to image                                                                                                                                            0.0s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:0d22193fa94684f23bd09166b6c105dcb2e1ad3cfe55f9513bd93b80c45a865b                                                                      0.0s
+ => => naming to docker.io/library/image5                                                                                                                         0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image5
+root@1d4236b999d2:/home/ubuntu/docker# ls
+file1  sumofn.sh
+root@1d4236b999d2:/home/ubuntu/docker# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ vi docker 
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image6 .
+[+] Building 1.5s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 202B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   1.3s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 56.95kB                                                                                                                              0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/docker                                                                                                                      0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => [5/5] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:1e05d29789d9d96abde4c3ac7765096fccf6a2094680e1c28ee007f2efcb3167                                                                      0.0s
+ => => naming to docker.io/library/image6                                                                                                                         0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image6
+root@b61e9b9282fc:/home/ubuntu/docker# ls
+Dockerfile  Shellscripts_2024_NikhilPatil  file1
+root@b61e9b9282fc:/home/ubuntu/docker# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image7 .
+[+] Building 0.9s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 252B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.7s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.30kB                                                                                                                               0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/docker                                                                                                                      0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => [5/5] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:9ccc8770108b90e1a9875a62b6606f78cf373282bfde5ccd0f00de5d40b18012                                                                      0.0s
+ => => naming to docker.io/library/image7                                                                                                                         0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image7 
+Enter the integer value
+The sum of first n numbers is 15
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image7 "/bin/bash" "/home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumofn.sh" "10"
+Enter the integer value
+The sum of first n numbers is 55
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image7 "/bin/bash" "/home/ubuntu/docker/Shellscripts_2024_NikhilPatil/sumofn.sh" "100"
+Enter the integer value
+The sum of first n numbers is 5050
+ubuntu@ip-172-31-36-206:~/docker$ ls
+Dockerfile  Shellscripts_2024_NikhilPatil
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image7 
+Enter the integer value
+The sum of first n numbers is 15
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image6
+root@b39f65ca6709:/home/ubuntu/docker# ls
+Dockerfile  Shellscripts_2024_NikhilPatil  file1
+root@b39f65ca6709:/home/ubuntu/docker# cat file1
+Welcome to docker
+root@b39f65ca6709:/home/ubuntu/docker# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -it image8 .
+unknown shorthand flag: 'i' in -it
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Run 'docker buildx build --help' for more information
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image8 .
+[+] Building 2.6s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 599B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   1.4s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => CACHED [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                      0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.65kB                                                                                                                               0.0s
+ => [2/5] WORKDIR /home/ubuntu/test1                                                                                                                              0.1s
+ => [3/5] RUN pwd                                                                                                                                                 0.4s
+ => [4/5] RUN echo "Welcome to docker" >>file1                                                                                                                    0.4s
+ => [5/5] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.1s
+ => => writing image sha256:c70fee4c0a849380cceb387705781ba4d66db144c44a67a3dfe72e2c6bd1b6be                                                                      0.0s
+ => => naming to docker.io/library/image8                                                                                                                         0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image8 
+root@b0b0059f9fcc:/home/ubuntu/test1# ls
+Dockerfile  Shellscripts_2024_NikhilPatil  file1
+root@b0b0059f9fcc:/home/ubuntu/test1# pwd
+/home/ubuntu/test1
+root@b0b0059f9fcc:/home/ubuntu/test1# env
+HOSTNAME=b0b0059f9fcc
+PWD=/home/ubuntu/test1
+HOME=/root
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+TERM=xterm
+SHLVL=1
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+TEST=/home/ubuntu/test1
+_=/usr/bin/env
+root@b0b0059f9fcc:/home/ubuntu/test1# ecit
+bash: ecit: command not found
+root@b0b0059f9fcc:/home/ubuntu/test1# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build --build-arg TEST=/home/ubuntu/test2 -t image9 . 
+[+] Building 1.8s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 599B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.6s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => CACHED [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                      0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.08kB                                                                                                                               0.0s
+ => [2/5] WORKDIR /home/ubuntu/test2                                                                                                                              0.0s
+ => [3/5] RUN pwd                                                                                                                                                 0.4s
+ => [4/5] RUN echo "Welcome to docker" >>file1                                                                                                                    0.4s
+ => [5/5] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.1s
+ => => writing image sha256:cd276100ba1cc2a2b96d1555a41989876cf5390cdf669f97ad0e3b808fbc5b89                                                                      0.0s
+ => => naming to docker.io/library/image9                                                                                                                         0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image9
+root@30599a676f21:/home/ubuntu/test2# ecit
+bash: ecit: command not found
+root@30599a676f21:/home/ubuntu/test2# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run --build-arg TEST=/home/ubuntu/test4 -it image9
+unknown flag: --build-arg
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run 'docker run --help' for more information
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image10 .
+[+] Building 1.5s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 599B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   1.4s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.65kB                                                                                                                               0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/test1                                                                                                                       0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => CACHED [5/5] COPY  . .                                                                                                                                        0.0s
+ => exporting to image                                                                                                                                            0.0s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:c70fee4c0a849380cceb387705781ba4d66db144c44a67a3dfe72e2c6bd1b6be                                                                      0.0s
+ => => naming to docker.io/library/image10                                                                                                                        0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -e TEST="/home/ubuntu/test6" -it image10
+root@126ef4ccc697:/home/ubuntu/test1# env
+HOSTNAME=126ef4ccc697
+PWD=/home/ubuntu/test1
+HOME=/root
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+TERM=xterm
+SHLVL=1
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+TEST=/home/ubuntu/test6
+_=/usr/bin/env
+root@126ef4ccc697:/home/ubuntu/test1# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run --build-arg TEST=/home/ubuntu/test4 -it image9
+unknown flag: --build-arg
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run 'docker run --help' for more information
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run --build-arg TEST=/home/ubuntu/test4 -it image9
+unknown flag: --build-arg
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run 'docker run --help' for more information
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build --build-arg TEST=/home/ubuntu/test2 -t image9 . 
+[+] Building 0.7s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 599B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.6s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.08kB                                                                                                                               0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/test2                                                                                                                       0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => CACHED [5/5] COPY  . .                                                                                                                                        0.0s
+ => exporting to image                                                                                                                                            0.0s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:cd276100ba1cc2a2b96d1555a41989876cf5390cdf669f97ad0e3b808fbc5b89                                                                      0.0s
+ => => naming to docker.io/library/image9                                                                                                                         0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run --build-arg TEST=/home/ubuntu/test4 -it image9
+unknown flag: --build-arg
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run 'docker run --help' for more information
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image9
+root@aadc6dbb0da2:/home/ubuntu/test2# env
+HOSTNAME=aadc6dbb0da2
+PWD=/home/ubuntu/test2
+HOME=/root
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+TERM=xterm
+SHLVL=1
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+TEST=/home/ubuntu/test2
+_=/usr/bin/env
+root@aadc6dbb0da2:/home/ubuntu/test2# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image11 .
+[+] Building 1.6s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 675B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   1.3s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.72kB                                                                                                                               0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/test1                                                                                                                       0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => [5/5] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:aa6416ad80c286ba44b76e72b653112e345943807ea4e0ad94d72cb1c4252e67                                                                      0.0s
+ => => naming to docker.io/library/image11                                                                                                                        0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image11 
+Enter the integer value
+The sum of first n numbers is 15
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image12 .
+[+] Building 0.9s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 612B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.6s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.66kB                                                                                                                               0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/test1                                                                                                                       0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => [5/5] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:b5217da48f3f23e831563efd278e194a6fcc0d0c05e2e4d284a47caa24850121                                                                      0.0s
+ => => naming to docker.io/library/image12                                                                                                                        0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image12 
+Enter the integer value
+./Shellscripts_2024_NikhilPatil/sumofn.sh: line 8: [: -gt: unary operator expected
+The sum of first n numbers is 0
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image13 .
+[+] Building 0.9s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 618B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.6s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.67kB                                                                                                                               0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/test1                                                                                                                       0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => [5/5] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:29908392783b869ff91f8e33073355f88d3d27390a2153e759e7fd65837826d6                                                                      0.0s
+ => => naming to docker.io/library/image13                                                                                                                        0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image13
+Enter the integer value
+The sum of first n numbers is 55
+ubuntu@ip-172-31-36-206:~/docker$ wq
+wq: command not found
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image14 .
+[+] Building 1.5s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 632B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   1.3s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.68kB                                                                                                                               0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/test1                                                                                                                       0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => [5/5] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.1s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:26c8d2e4bb2883bf39c2447a3eb8748361f749af3c02e928ac2b030f9a8e2931                                                                      0.0s
+ => => naming to docker.io/library/image14                                                                                                                        0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image14
+Enter the integer value
+The sum of first n numbers is 55
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image15 .
+[+] Building 0.1s (1/1) FINISHED                                                                                                                        docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 720B                                                                                                                              0.0s
+Dockerfile:9
+--------------------
+   7 |     WORKDIR $TEST
+   8 |     RUN pwd
+   9 | >>> ADD https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz
+  10 |     RUN echo "Welcome to docker" >>file1
+  11 |     COPY  . .
+--------------------
+ERROR: failed to solve: dockerfile parse error on line 9: ADD requires at least two arguments, but only one was provided. Destination could not be determined
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image15 .
+[+] Building 1.7s (12/12) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 722B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.6s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/6] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.0s
+ => => transferring context: 5.77kB                                                                                                                               0.0s
+ => [4/6] ADD https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz .                                                               0.2s
+ => CACHED [2/6] WORKDIR /home/ubuntu/test1                                                                                                                       0.0s
+ => CACHED [3/6] RUN pwd                                                                                                                                          0.0s
+ => [4/6] ADD https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz .                                                               0.1s
+ => [5/6] RUN echo "Welcome to docker" >>file1                                                                                                                    0.4s
+ => [6/6] COPY  . .                                                                                                                                               0.1s
+ => exporting to image                                                                                                                                            0.2s
+ => => exporting layers                                                                                                                                           0.1s
+ => => writing image sha256:f1da735f09d19fe02c81de755bfda732875f84e613aca37375a5f139f4b1ef97                                                                      0.0s
+ => => naming to docker.io/library/image15                                                                                                                        0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image15
+Enter the integer value
+The sum of first n numbers is 55
+ubuntu@ip-172-31-36-206:~/docker$ ls
+Dockerfile  Shellscripts_2024_NikhilPatil
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image16 .
+[+] Building 0.8s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 724B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   0.7s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [4/5] ADD https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz .                                                               0.0s
+ => CACHED [2/5] WORKDIR /home/ubuntu/test1                                                                                                                       0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => CACHED [4/5] ADD https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz .                                                        0.0s
+ => CACHED [5/5] RUN echo "Welcome to docker" >>file1                                                                                                             0.0s
+ => exporting to image                                                                                                                                            0.0s
+ => => exporting layers                                                                                                                                           0.0s
+ => => writing image sha256:88ba9611e94fd9e772d63f15d94e1af337cf421c9b272e8ec8ea6946f12eb899                                                                      0.0s
+ => => naming to docker.io/library/image16                                                                                                                        0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image16
+root@56fc61311072:/home/ubuntu/test1# ls
+apache-tomcat-10.1.39.tar.gz  file1
+root@56fc61311072:/home/ubuntu/test1# exit
+exit
+ubuntu@ip-172-31-36-206:~/docker$ wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz
+--2025-03-17 15:30:56--  https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz
+Resolving dlcdn.apache.org (dlcdn.apache.org)... 151.101.2.132, 2a04:4e42::644
+Connecting to dlcdn.apache.org (dlcdn.apache.org)|151.101.2.132|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13878021 (13M) [application/x-gzip]
+Saving to: ‘apache-tomcat-10.1.39.tar.gz’
+
+apache-tomcat-10.1.39.tar.gz              100%[====================================================================================>]  13.23M  18.6MB/s    in 0.7s    
+
+2025-03-17 15:30:56 (18.6 MB/s) - ‘apache-tomcat-10.1.39.tar.gz’ saved [13878021/13878021]
+
+ubuntu@ip-172-31-36-206:~/docker$ vi Dockerfile 
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker build -t image17 .
+[+] Building 2.6s (10/10) FINISHED                                                                                                                      docker:default
+ => [internal] load build definition from Dockerfile                                                                                                              0.0s
+ => => transferring dockerfile: 760B                                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                   1.2s
+ => [internal] load .dockerignore                                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                                   0.0s
+ => [1/5] FROM docker.io/library/ubuntu:22.04@sha256:ed1544e454989078f5dec1bfdabd8c5cc9c48e0705d07b678ab6ae3fb61952d2                                             0.0s
+ => [internal] load build context                                                                                                                                 0.2s
+ => => transferring context: 13.88MB                                                                                                                              0.2s
+ => CACHED [2/5] WORKDIR /home/ubuntu/test1                                                                                                                       0.0s
+ => CACHED [3/5] RUN pwd                                                                                                                                          0.0s
+ => [4/5] ADD apache-tomcat-10.1.39.tar.gz .                                                                                                                      0.4s
+ => [5/5] RUN echo "Welcome to docker" >>file1                                                                                                                    0.4s
+ => exporting to image                                                                                                                                            0.3s
+ => => exporting layers                                                                                                                                           0.3s
+ => => writing image sha256:7a04967efaaf1bccceead3f48d352461502d8152c0a13a9f18cb07f70fa9ec9a                                                                      0.0s
+ => => naming to docker.io/library/image17                                                                                                                        0.0s
+ubuntu@ip-172-31-36-206:~/docker$ sudo docker run -it image17
+root@07058783cb2b:/home/ubuntu/test1# ls
+apache-tomcat-10.1.39  file1
+root@07058783cb2b:/home/ubuntu/test1# 
